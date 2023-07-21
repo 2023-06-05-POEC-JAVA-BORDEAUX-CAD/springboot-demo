@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.business.Annuaire;
 import com.example.demo.business.Personne;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -43,5 +44,10 @@ public class AnnuaireController {
         System.out.println(newPersonne);
 
         annuaire.addPersonne(newPersonne);
+    }
+
+    @DeleteMapping("personnes/{id}")
+    public void deletePersonne(@PathVariable("id") Integer id){
+            annuaire.deletePersonne(id);
     }
 }

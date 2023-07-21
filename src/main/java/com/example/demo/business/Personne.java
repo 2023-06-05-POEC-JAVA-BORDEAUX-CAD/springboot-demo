@@ -2,6 +2,8 @@ package com.example.demo.business;
 
 public class Personne {
 
+    private int id;
+
     private String prenom;
     private String nom;
 
@@ -32,8 +34,17 @@ public class Personne {
     @Override
     public String toString() {
         return "Personne{" +
-                "prenom='" + prenom + '\'' +
+                "id=" + id +
+                ", prenom='" + prenom + '\'' +
                 ", nom='" + nom + '\'' +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

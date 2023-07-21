@@ -9,13 +9,27 @@ import java.util.List;
 @Service
 public class Annuaire {
 
+    private int nextId = 0;
+
     private List<Personne> personnes = new ArrayList<>();
 
     public void addPersonne(Personne personne){
+        nextId++;
+        personne.setId(nextId);
         personnes.add(personne);
     }
 
     public List<Personne> getPersonnes(){
         return personnes;
+    }
+
+    public void deletePersonne(int id){
+        int index = 0;
+        while (index < personnes.size() && personnes.get(index).getId() != id){
+            index++;
+        }
+        if(index < personnes.size()){
+            personnes.remove(index);
+        }
     }
 }
