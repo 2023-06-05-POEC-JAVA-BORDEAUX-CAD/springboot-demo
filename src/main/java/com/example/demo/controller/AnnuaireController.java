@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.business.Annuaire;
 import com.example.demo.business.Personne;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,9 @@ import java.util.List;
 @RestController
 public class AnnuaireController {
 
+    @Autowired
+    Annuaire annuaire;
+
     @GetMapping("hello")
     public String sayHello(){
         return "Coucou";
@@ -18,7 +23,7 @@ public class AnnuaireController {
 
     @GetMapping("personnes")
     public List<Personne> getPersonnes(){
-
+/*
         Personne p = new Personne("Jean", "Rodriguez");
         Personne p2 = new Personne("Marie", "Dupont");
 
@@ -26,12 +31,16 @@ public class AnnuaireController {
         personnes.add(p);
         personnes.add(p2);
 
-        return personnes;
+        return personnes;*/
+
+        return annuaire.getPersonnes();
     }
 
 
     @PostMapping("personnes")
     public void postPersonne(@RequestBody Personne newPersonne){
         System.out.println(newPersonne);
+
+        annuaire.addPersonne(newPersonne);
     }
 }
