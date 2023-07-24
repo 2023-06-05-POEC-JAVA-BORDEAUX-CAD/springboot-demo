@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api")
@@ -54,8 +55,16 @@ public class AnnuaireController {
 
 
     @GetMapping("personnes/{id}")
-    public Personne getPersonne(@PathVariable("id") Integer id){
-        return annuaire.getPersonne(id);
+    public ResponseEntity<Personne> getPersonne(@PathVariable("id") Integer id){
+        Optional<Personne> optional = annuaire.getPersonne(id);
+
+        if(optional.isPresent()){
+            Personne personne = optional.get();
+            return ResponseEntity.ok(personne);
+        }
+        else {//if(optional.isEmpty())
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping("personnes/{id}")
