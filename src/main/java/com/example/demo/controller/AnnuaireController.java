@@ -4,6 +4,7 @@ import com.example.demo.business.Annuaire;
 import com.example.demo.business.Personne;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -58,8 +59,15 @@ public class AnnuaireController {
     }
 
     @PutMapping("personnes/{id}")
-    public void putPersonne(@PathVariable("id") Integer id, @RequestBody Personne personne){
+    public ResponseEntity putPersonne(@PathVariable("id") Integer id, @RequestBody Personne personne){
+
+        if(annuaire.getPersonne(id) == null){
+            return ResponseEntity.notFound().build();
+        }
+
+
         annuaire.editPersonne(id, personne);
+        return ResponseEntity.ok().build();
     }
 
 }
