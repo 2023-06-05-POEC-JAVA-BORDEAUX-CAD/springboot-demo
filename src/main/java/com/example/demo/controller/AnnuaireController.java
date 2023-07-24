@@ -65,10 +65,9 @@ public class AnnuaireController {
             return ResponseEntity.badRequest().build();
         }
 
-        if(annuaire.getPersonne(id) == null){
+        if(annuaire.getPersonne(id).isEmpty()){
             return ResponseEntity.notFound().build();
         }
-
 
         annuaire.editPersonne(id, personne);
         return ResponseEntity.ok().build();

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class Annuaire {
@@ -47,13 +48,13 @@ public class Annuaire {
     }
 
 
-    public Personne getPersonne(Integer id){
+    public Optional<Personne> getPersonne(Integer id){
         for (Personne personne : personnes){
             if(id.equals(personne.getId())){
-                return personne;
+                return Optional.of(personne);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public void editPersonne(Integer id, Personne personne) {
