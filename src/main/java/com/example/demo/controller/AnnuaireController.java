@@ -50,4 +50,11 @@ public class AnnuaireController {
     public void deletePersonne(@PathVariable("id") Integer id){
             annuaire.deletePersonne(id);
     }
+
+
+    @GetMapping("personnes/{id}")
+    public Personne getPersonne(@PathVariable("id") Integer id){
+        return annuaire.getPersonne(id);
+    }
+
 }

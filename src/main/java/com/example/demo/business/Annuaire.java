@@ -44,4 +44,15 @@ public class Annuaire {
             personnes.remove(index);
         }
     }
+
+
+    public Personne getPersonne(Integer id){
+        for (Personne personne : personnes){
+            if(id.equals(personne.getId())){
+                return personne;
+            }
+        }
+        return null;
+    }
+
 }
