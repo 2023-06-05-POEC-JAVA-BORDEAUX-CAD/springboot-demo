@@ -57,4 +57,9 @@ public class AnnuaireController {
         return annuaire.getPersonne(id);
     }
 
+    @PutMapping("personnes/{id}")
+    public void putPersonne(@PathVariable("id") Integer id, @RequestBody Personne personne){
+        annuaire.editPersonne(id, personne);
+    }
+
 }

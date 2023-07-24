@@ -2,6 +2,7 @@ package com.example.demo.business;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,4 +56,13 @@ public class Annuaire {
         return null;
     }
 
+    public void editPersonne(Integer id, Personne personne) {
+        int index = 0;
+        while (index < personnes.size()){
+            if(id.equals(personnes.get(index).getId())){
+                personnes.set(index, personne);
+            }
+            index++;
+        }
+    }
 }
