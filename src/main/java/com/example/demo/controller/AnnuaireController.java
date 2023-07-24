@@ -61,6 +61,10 @@ public class AnnuaireController {
     @PutMapping("personnes/{id}")
     public ResponseEntity putPersonne(@PathVariable("id") Integer id, @RequestBody Personne personne){
 
+        if(!id.equals(personne.getId())){
+            return ResponseEntity.badRequest().build();
+        }
+
         if(annuaire.getPersonne(id) == null){
             return ResponseEntity.notFound().build();
         }
