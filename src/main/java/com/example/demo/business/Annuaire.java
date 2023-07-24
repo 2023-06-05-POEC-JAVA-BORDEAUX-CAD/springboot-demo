@@ -24,6 +24,18 @@ public class Annuaire {
     }
 
     public void deletePersonne(int id){
+
+        /*
+        for(Personne personne : personnes){
+            if(personne.getId() == id){
+                personnes.remove(personne);
+                //break;
+                //return;
+            }
+        }
+        */
+
+
         int index = 0;
         while (index < personnes.size() && personnes.get(index).getId() != id){
             index++;
