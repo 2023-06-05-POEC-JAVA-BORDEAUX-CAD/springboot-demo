@@ -47,4 +47,15 @@ class DemoApplicationTests {
 			System.out.println("id non trouvé");
 		}
 	}
+
+	@Test
+	void updatePersonne(){
+		Optional<Personne> optional = personneRepository.findById(2);
+		if(optional.isPresent()) {
+			Personne personne = optional.get();
+			personne.setPrenom("Michel");
+			personne.setNom("Polnaref");
+			personneRepository.save(personne);
+		}
+	}
 }
