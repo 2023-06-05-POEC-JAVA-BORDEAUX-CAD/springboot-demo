@@ -1,7 +1,13 @@
 package com.example.demo.business;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="personnes")
 public class Personne {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String prenom;
