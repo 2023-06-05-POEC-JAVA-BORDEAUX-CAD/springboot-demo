@@ -54,8 +54,13 @@ class DemoApplicationTests {
 		if(optional.isPresent()) {
 			Personne personne = optional.get();
 			personne.setPrenom("Michel");
-			personne.setNom("Polnaref");
+			personne.setNomDeFamille("Polnaref");
 			personneRepository.save(personne);
 		}
+	}
+
+	@Test
+	void deletePersonne(){
+		personneRepository.deleteById(1);
 	}
 }

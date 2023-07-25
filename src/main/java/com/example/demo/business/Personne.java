@@ -11,15 +11,17 @@ public class Personne {
     private int id;
 
     private String prenom;
-    private String nom;
+
+    @Column(name = "nom")
+    private String nomDeFamille;
 
     public Personne() {
     }
-    public Personne(String prenom, String nom) {
-        this.prenom = prenom;
-        this.nom = nom;
-    }
 
+    public Personne(String prenom, String nomDeFamille) {
+        this.prenom = prenom;
+        this.nomDeFamille = nomDeFamille;
+    }
 
     public String getPrenom() {
         return prenom;
@@ -29,21 +31,12 @@ public class Personne {
         this.prenom = prenom;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomDeFamille() {
+        return nomDeFamille;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    @Override
-    public String toString() {
-        return "Personne{" +
-                "id=" + id +
-                ", prenom='" + prenom + '\'' +
-                ", nom='" + nom + '\'' +
-                '}';
+    public void setNomDeFamille(String nomDeFamille) {
+        this.nomDeFamille = nomDeFamille;
     }
 
     public int getId() {
@@ -52,5 +45,14 @@ public class Personne {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Personne{" +
+                "id=" + id +
+                ", prenom='" + prenom + '\'' +
+                ", nomDeFamille='" + nomDeFamille + '\'' +
+                '}';
     }
 }
