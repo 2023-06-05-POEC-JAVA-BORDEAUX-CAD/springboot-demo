@@ -63,4 +63,14 @@ class DemoApplicationTests {
 	void deletePersonne(){
 		personneRepository.deleteById(1);
 	}
+
+	@Test
+	void findByPrenom(){
+		String prenom = "Michel";
+		List<Personne> lesMichels = personneRepository.findAllByPrenom(prenom);
+		for(Personne michel : lesMichels){
+			System.out.println(michel);
+		}
+
+	}
 }
