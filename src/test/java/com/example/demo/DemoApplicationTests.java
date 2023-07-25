@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 class DemoApplicationTests {
@@ -31,8 +32,19 @@ class DemoApplicationTests {
 		for (Personne p : personnes){
 			System.out.println(p);
 		}
-
 	}
 
+	@Test
+	void findOnePersonne(){
+		Integer id = 2;
 
+		Optional<Personne> optional = personneRepository.findById(id);
+		if(optional.isPresent()){
+			Personne personne = optional.get();
+			System.out.println(personne);
+		}
+		else {
+			System.out.println("id non trouvé");
+		}
+	}
 }
