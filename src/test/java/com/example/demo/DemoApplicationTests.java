@@ -1,11 +1,12 @@
 package com.example.demo;
 
-import com.example.demo.business.Personne;
+import com.example.demo.dao.AdresseRepository;
+import com.example.demo.entity.Adresse;
+import com.example.demo.entity.Personne;
 import com.example.demo.dao.PersonneRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +16,9 @@ class DemoApplicationTests {
 
 	@Autowired
 	PersonneRepository personneRepository;
+
+	@Autowired
+	AdresseRepository adresseRepository;
 
 	@Test
 	void savePersonne() {
@@ -73,4 +77,18 @@ class DemoApplicationTests {
 		}
 
 	}
+
+
+	@Test
+	void testAdresse(){
+		Adresse adresse = new Adresse(12, "rue de la Mairie", "Montpellier", "34000");
+		adresseRepository.save(adresse);
+
+		Personne steven = new Personne("Steven", "Seagale");
+		steven.setAdresse(adresse);
+		personneRepository.save(steven);
+	}
+
+
+
 }

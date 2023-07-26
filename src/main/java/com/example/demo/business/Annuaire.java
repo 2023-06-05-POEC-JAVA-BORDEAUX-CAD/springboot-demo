@@ -1,8 +1,9 @@
 package com.example.demo.business;
 
-import org.springframework.stereotype.Component;
+import com.example.demo.dao.PersonneRepository;
+import com.example.demo.entity.Personne;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,9 @@ import java.util.Optional;
 
 @Service
 public class Annuaire {
+
+    @Autowired
+    PersonneRepository personneRepository;
 
     private int nextId = 0;
 
@@ -22,7 +26,8 @@ public class Annuaire {
     }
 
     public List<Personne> getPersonnes(){
-        return personnes;
+
+        return personneRepository.findAll();
     }
 
     public void deletePersonne(int id){

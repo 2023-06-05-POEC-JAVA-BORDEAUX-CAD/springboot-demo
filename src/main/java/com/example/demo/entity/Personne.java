@@ -1,5 +1,6 @@
-package com.example.demo.business;
+package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +15,9 @@ public class Personne {
 
     @Column(name = "nom")
     private String nomDeFamille;
+
+    @ManyToOne
+    private Adresse adresse;
 
     public Personne() {
     }
@@ -54,5 +58,13 @@ public class Personne {
                 ", prenom='" + prenom + '\'' +
                 ", nomDeFamille='" + nomDeFamille + '\'' +
                 '}';
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
     }
 }

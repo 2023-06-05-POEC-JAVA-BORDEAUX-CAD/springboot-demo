@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.business.Annuaire;
-import com.example.demo.business.Personne;
+import com.example.demo.entity.Personne;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
