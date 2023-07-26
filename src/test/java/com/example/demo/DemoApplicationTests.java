@@ -89,6 +89,14 @@ class DemoApplicationTests {
 		personneRepository.save(steven);
 	}
 
-
+ 	@Test
+	void getPersonneAvecAdresse() {
+		Optional<Personne> op = personneRepository.findById(5);
+		if (op.isPresent()){
+			Personne steven = op.get();
+			System.out.println(steven);
+			System.out.println(steven.getAdresse());
+		}
+ 	}
 
 }

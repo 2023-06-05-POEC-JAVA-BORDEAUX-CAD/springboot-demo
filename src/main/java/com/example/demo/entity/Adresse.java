@@ -60,4 +60,15 @@ public class Adresse {
     public void setCodePostal(String codePostal) {
         this.codePostal = codePostal;
     }
+
+    @Override
+    public String toString() {
+        return "Adresse{" +
+                "id=" + id +
+                ", numero=" + numero +
+                ", rue='" + rue + '\'' +
+                ", ville='" + ville + '\'' +
+                ", codePostal='" + codePostal + '\'' +
+                '}';
+    }
 }
