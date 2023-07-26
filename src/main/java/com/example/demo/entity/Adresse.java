@@ -71,4 +71,12 @@ public class Adresse {
                 ", codePostal='" + codePostal + '\'' +
                 '}';
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
