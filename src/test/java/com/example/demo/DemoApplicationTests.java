@@ -1,13 +1,16 @@
 package com.example.demo;
 
 import com.example.demo.dao.AdresseRepository;
+import com.example.demo.dao.StageRepository;
 import com.example.demo.entity.Adresse;
 import com.example.demo.entity.Personne;
 import com.example.demo.dao.PersonneRepository;
+import com.example.demo.entity.Stage;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +22,9 @@ class DemoApplicationTests {
 
 	@Autowired
 	AdresseRepository adresseRepository;
+
+	@Autowired
+	StageRepository stageRepository;
 
 	@Test
 	void savePersonne() {
@@ -98,5 +104,34 @@ class DemoApplicationTests {
 			System.out.println(steven.getAdresse());
 		}
  	}
+
+
+	 @Test
+	void testStage(){
+		 Optional<Personne> opSteven = personneRepository.findById(5);
+		 if (opSteven.isPresent()){
+			 Personne steven = opSteven.get();
+
+			 Optional<Personne> opAlain = personneRepository.findById(4);
+			 if (opAlain.isPresent()){
+				Personne alain = opAlain.get();
+
+				Stage salsa = new Stage("Salsa pour débutant",
+						LocalDateTime.of(2023, 12, 12, 9, 0));
+				salsa.addStagiaire(alain);
+				salsa.addStagiaire(steven);
+
+				stageRepository.save(salsa);
+
+
+				 Stage rock = new Stage("Rock acrobatique",
+						 LocalDateTime.of(2023, 12, 11, 9, 0));
+				 rock.addStagiaire(alain);
+				 stageRepository.save(rock);
+
+			 }
+		 }
+
+	 }
 
 }
