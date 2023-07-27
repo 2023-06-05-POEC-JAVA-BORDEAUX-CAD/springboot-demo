@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <style>
+      p {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello Thymeleaf</h1>
+
+    <p>Salut</p>
+    <p th:text="' Bonjour : ' + ${ nom }"></p>
+
+  <p th:if=" ${age} > 17">Tu es une personne majeure</p>
+    <p th:if=" ${nom} eq 'Toto'">IF OK</p>
+
+
+  <ul>
+    <li th:each=" p:${personnes}" th:text="${p.getPrenom()}"></li>
+  </ul>
+
+
+    <form method="POST" action="personnes">
+      <label for="prenom">Prenom:</label>
+      <input type="text" name="prenom" id="prenom">
+      <label for="nom">Nom:</label>
+      <input type="text" name="nomDeFamille" id="nom">
+      <input type="submit" value="Ajouter"> </form>
+
+  </body>
+</html>
